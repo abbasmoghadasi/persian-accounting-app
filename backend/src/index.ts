@@ -1,14 +1,14 @@
-import Fastify from 'fastify'
+import { buildApp } from './app'
+import { env } from './config/env'
+import { runMigrations } from './db/migrate'
 
-const app = Fastify({ logger: true })
+async function start() {
+  const app = await buildApp()
 
-app.get('/api/health', async () => {
-  return { status: 'ok', message: 'سرور در حال اجراست' }
-})
+  runMigrations()
 
-const start = async () => {
   try {
-    await app.listen({ port: 3000, host: '0.0.0.0' })
+    await app.listen({ port: env.port, host: env.host })
   } catch (err) {
     app.log.error(err)
     process.exit(1)
