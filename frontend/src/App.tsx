@@ -1,10 +1,8 @@
+import { RouterProvider } from 'react-router-dom'
+import router from '@/router'
+
 function App() {
-  return (
-    <div style={{ padding: '2rem', textAlign: 'center' }}>
-      <h1>حسابداری شخصی</h1>
-      <p>در حال توسعه...</p>
-    </div>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
