@@ -5,11 +5,12 @@ export function runMigrations(): void {
 
   db.exec(`
     CREATE TABLE IF NOT EXISTS accounts (
-      id          INTEGER PRIMARY KEY AUTOINCREMENT,
-      name        TEXT    NOT NULL,
-      type        TEXT    NOT NULL,
-      balance     REAL    NOT NULL DEFAULT 0,
-      created_at  TEXT    NOT NULL DEFAULT (datetime('now'))
+      id              INTEGER PRIMARY KEY AUTOINCREMENT,
+      name            TEXT    NOT NULL,
+      type            TEXT    NOT NULL CHECK (type IN ('cash', 'bank', 'credit', 'savings')),
+      currency        TEXT    NOT NULL DEFAULT 'IRR' CHECK (currency IN ('IRR', 'USD', 'EUR')),
+      initial_balance REAL    NOT NULL DEFAULT 0,
+      created_at      TEXT    NOT NULL DEFAULT (datetime('now'))
     );
 
     CREATE TABLE IF NOT EXISTS transactions (
@@ -47,4 +48,9 @@ export function runMigrations(): void {
       created_at  TEXT    NOT NULL DEFAULT (datetime('now'))
     );
   `)
+
+  // Upgrade existing accounts table if created before this migration
+  const tryAlter = (sql: string) => { try { db.exec(sql) } catch { /* column already exists */ } }
+  tryAlter(`ALTER TABLE accounts ADD COLUMN currency TEXT NOT NULL DEFAULT 'IRR'`)
+  tryAlter(`ALTER TABLE accounts ADD COLUMN initial_balance REAL NOT NULL DEFAULT 0`)
 }

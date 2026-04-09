@@ -3,9 +3,14 @@ import type { ApiResponse } from '@/types/api'
 const BASE = '/api'
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
+  const hasBody = options?.body !== undefined
+
   const res = await fetch(`${BASE}${path}`, {
-    headers: { 'Content-Type': 'application/json' },
     ...options,
+    headers: {
+      ...(hasBody ? { 'Content-Type': 'application/json' } : {}),
+      ...options?.headers,
+    },
   })
 
   const json: ApiResponse<T> = await res.json()

@@ -1,0 +1,89 @@
+.account-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-right: 4px solid transparent;
+  gap: 1rem;
+}
+
+.account-card--cash    { border-right-color: #16a34a; }
+.account-card--bank    { border-right-color: #2563eb; }
+.account-card--credit  { border-right-color: #dc2626; }
+.account-card--savings { border-right-color: #7c3aed; }
+
+.account-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.account-card__type-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.account-card__name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.account-card__balance {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  direction: ltr;
+  text-align: right;
+}
+
+.account-card__currency {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.account-card__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.account-card__btn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.account-card__btn--edit {
+  color: var(--color-text-muted);
+  background-color: var(--color-background);
+}
+.account-card__btn--edit:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.account-card__btn--delete {
+  color: var(--color-text-muted);
+  background-color: var(--color-background);
+}
+.account-card__btn--delete:hover {
+  background-color: #fef2f2;
+  color: var(--color-danger);
+}
