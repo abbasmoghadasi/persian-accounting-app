@@ -1,53 +1,58 @@
-# حسابداری شخصی
+# Persian Accounting App
 
-یک اپلیکیشن حسابداری شخصی local-first برای اندروید و وب، با رابط کاربری فارسی.
+A local-first Persian accounting application for Android and web, with a Persian-only UI and RTL layout.
 
-## ساختار پروژه
+## Project Structure
 
 ```
 persian-accounting-app/
 ├── frontend/          # React + TypeScript + Vite
 ├── backend/           # Node.js + TypeScript + Fastify
-├── docs/              # مستندات
-├── package.json       # اسکریپت‌های root
+├── docs/              # Documentation
+├── package.json       # Root scripts
 └── .gitignore
 ```
 
-## پیش‌نیازها
+## Prerequisites
 
 - Node.js >= 20
 - npm >= 10
 
-## نصب وابستگی‌ها
+## Install Dependencies
 
 ```bash
 npm run install:all
 ```
 
-## اجرا در محیط توسعه
+## Development
 
-اجرای همزمان frontend و backend:
+Run frontend and backend concurrently:
 
 ```bash
 npm run dev
 ```
 
-یا به صورت جداگانه:
+Or separately:
 
 ```bash
-# فقط backend (پورت 3000)
-npm run dev:backend
-
-# فقط frontend (پورت 5173)
-npm run dev:frontend
+npm run dev:backend    # backend on port 3000
+npm run dev:frontend   # frontend on port 5173
 ```
 
-## تست سلامت سرور
+## Health Check
 
 ```bash
 curl http://localhost:3000/api/health
 ```
 
-## مستندات
+## Documentation
 
-- [معماری پروژه](docs/architecture.md)
+- [Architecture](docs/architecture.md)
+
+## Planned Features
+
+- Personal accounts and wallets
+- Manual transactions
+- Persian (Jalali) date support
+- Iranian bank SMS parsing
+- Shared financial ledgers with change history

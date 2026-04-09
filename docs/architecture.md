@@ -1,28 +1,28 @@
-# معماری پروژه
+# Architecture
 
-## ساختار کلی
+## Overview
 
-این پروژه یک monorepo است که شامل دو بخش اصلی می‌شود:
+This is a monorepo containing two main packages:
 
-- `frontend/` — رابط کاربری React + TypeScript + Vite
-- `backend/` — سرور Node.js + TypeScript + Fastify
-- `docs/` — مستندات
+- `frontend/` — React + TypeScript + Vite
+- `backend/` — Node.js + TypeScript + Fastify
+- `docs/` — Documentation
 
-## ارتباط frontend و backend
+## Frontend / Backend Communication
 
-- Frontend روی پورت `5173` اجرا می‌شود
-- Backend روی پورت `3000` اجرا می‌شود
-- درخواست‌های `/api/*` از طریق Vite proxy به backend ارسال می‌شوند
+- Frontend runs on port `5173`
+- Backend runs on port `3000`
+- All `/api/*` requests are proxied by Vite to the backend during development
 
-## پایگاه داده
+## Database
 
-- در نسخه MVP از SQLite استفاده می‌شود
-- فایل دیتابیس به صورت محلی ذخیره می‌شود
+- SQLite for MVP — stored as a local file
+- Can be replaced with a more capable database later
 
-## ویژگی‌های برنامه‌ریزی‌شده
+## Planned Features
 
-- حساب‌ها و کیف پول‌های شخصی
-- تراکنش‌های دستی
-- پشتیبانی از تاریخ شمسی
-- تجزیه پیامک‌های بانکی ایران
-- دفتر مالی مشترک بین دو نفر با تاریخچه تغییرات
+- Personal accounts and wallets
+- Manual transactions
+- Persian (Jalali) date support
+- Iranian bank SMS parsing
+- Shared financial ledgers with change history
